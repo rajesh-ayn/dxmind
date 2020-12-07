@@ -1,0 +1,72 @@
+<app-header></app-header> 
+<div class="container-fluid w-100 mt-5 p-1">
+  <div class="container-fluid p-1">
+    <h4 class="text-info text-weight-bold text-left"> Employee List Data...</h4>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="employee_filter" placeholder="Please search...">
+  </div>
+  <div class="card w-100 employee-list-container">
+    <!-- <div class="card-header card-title text-info text-weight-bold">
+      Employee List Data...
+    </div> -->
+    <div class="card-body"> 
+      <table class="table table-hover w-100">
+        <thead>
+          <tr>
+            <th class="text-warning text-weight-bold">First Name</th> 
+            <th class="text-warning text-weight-bold">Last Name</th>
+            <th class="text-warning text-weight-bold">Email</th>
+            <th class="text-warning text-weight-bold">Gender</th>
+            <th class="text-warning text-weight-bold">DOB</th>  
+
+            <th class="text-warning text-weight-bold">Mobile</th>
+            <th class="text-warning text-weight-bold">Age</th> 
+            <th class="text-warning text-weight-bold">Merital Status</th> 
+            <th class="text-warning text-weight-bold">Country</th>
+            <th class="text-warning text-weight-bold">State</th>
+            <th class="text-warning text-weight-bold">City</th>
+    
+            <th class="text-warning text-weight-bold">Checkin</th>
+            <th class="text-warning text-weight-bold">Checkout</th> 
+            <th class="text-warning text-weight-bold">Address</th>
+            <!-- <th> <img src="../../../assets/edit.svg" alt=""></th>
+            <th> <img src="../../../assets/trash.svg" alt=""></th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let emp of employee_list | filter:employee_filter;">
+            <td>{{emp.first_name }}</td> 
+            <td>{{emp.last_name }}</td>
+            <td>{{emp.email }}</td>
+            <td>{{emp.gender }}</td>
+            <td>{{emp.dob }}</td>   
+            
+            <td>{{emp.mobile }}</td>
+            <td>{{emp.age }}</td>
+    
+            <td>{{emp.merital_status }}</td>  
+            <td>{{emp.country }}</td>
+            <td>{{emp.state }}</td>
+            <td>{{emp.city }}</td>
+    
+            <td>{{emp.checkin }}</td>
+            <td>{{emp.checkout }}</td>
+            <td>{{emp.address }}</td> 
+            <td><img style="width: 20px;
+              height: 20px;" src="../../../assets/edit.svg" (click)="updateEmployee(emp)" alt=""></td>
+            <td><img style="width: 20px;
+              height: 20px;" src="../../../assets/delete.svg" (click)="deleteEmployee(emp)" alt=""></td>
+          </tr>
+          <!-- <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls> -->
+
+        </tbody>
+      </table> 
+    </div>
+  </div>
+ 
+</div>
+
+
+<ngx-spinner></ngx-spinner>

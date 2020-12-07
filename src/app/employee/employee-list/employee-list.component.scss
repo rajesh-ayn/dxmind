@@ -1,0 +1,19 @@
+::ng-deep .ngx-pagination {
+    margin-left: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    position: absolute;
+}
+
+// scrollbar css -
+// Add Product left section container -
+.employee-list-container {
+	width: calc(100vh - 500px);
+	background:  #f8f8f8;
+	
+	.itemWrap {
+	    text-align:  left;
+	    display: flex;
+  		flex-wrap: wrap;
+	}
+}

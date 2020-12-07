@@ -1,0 +1,151 @@
+<app-header></app-header>
+<main>
+  <div class="container">
+    <div class="card mb-3 mt-2">
+      <div class="card-header text-center text-info bg-light">
+        Create New Product
+      </div>
+      <div class="card-body">
+        <form [formGroup]="productForm" (submit)="onSubmit(productForm)">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="product-name">Product Name</label>
+              <input name="product_name" id="product_name" type="input" formControlName="product_name"
+                class="form-control">
+              <!-- Product Name Validation  Start -->
+              <div *ngIf="submitted && !productForm.controls['product_name'].valid">
+                <span *ngIf="productForm.controls['product_name'].hasError('required')" class="form-control-validation">
+                  Product name is required
+                </span>
+              </div>
+              <!-- End Product Name Valiation End -->
+            </div>
+            <div class="form-group col-md-6">
+              <label for="price">Price</label>
+              <input type="number" name="price" id="price" formControlName="price" class="form-control">
+              <!-- Last email Validation  Start -->
+              <div *ngIf="submitted && !productForm.controls['price'].valid">
+                <span *ngIf="productForm.controls['price'].hasError('required')" class="form-control-validation">
+                  Price is required
+                </span>
+              </div>
+              <!-- End Last Name Valiation End -->
+            </div>
+
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputAddress">Profit Margin</label>
+              <input type="number" class="form-control" id="profit_margin" name="profit_margin"
+                formControlName="profit_margin" placeholder="Profit margin">
+              <!-- Last Name Validation  Start -->
+              <div *ngIf="submitted && !productForm.controls['profit_margin'].valid">
+                <span *ngIf="productForm.controls['profit_margin'].hasError('required')"
+                  class="form-control-validation">
+                  Profit margin is required
+                </span>
+              </div>
+              <!-- End Last Name Valiation End -->
+            </div>
+            <div class="form-group col-md-6">
+              <label for="sku">Product SKU</label>
+              <input type="text" class="form-control" id="sku" name="sku" formControlName="sku"
+                placeholder="Product SKU">
+              <!-- Last Name Validation  Start -->
+              <div *ngIf="submitted && !productForm.controls['sku'].valid">
+                <span *ngIf="productForm.controls['sku'].hasError('required')" class="form-control-validation">
+                  Profit sku is required
+                </span>
+              </div>
+              <!-- End Last Name Valiation End -->
+            </div>
+
+          </div>
+
+
+          <!-- <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Product SKU</label>
+                            <select id="state" name="state" formControlName="state" class="form-control">
+                                <option selected>Choose...</option>
+                                <option *ngFor=" let state of states;">{{ state }}</option>
+                            </select> 
+                            <div *ngIf="submitted && !employeeForm.controls['state'].valid">
+                                <span *ngIf="employeeForm.controls['state'].hasError('required')"
+                                    class="form-control-validation">
+                                    state is required
+                                </span>
+                            </div> 
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputState">City</label>
+                            <select id="city" name="city" formControlName="city" class="form-control">
+                                <option selected>Choose...</option>
+                                <option *ngFor=" let city of cities;">{{ city }}</option>
+                            </select> 
+                            <div *ngIf="submitted && !employeeForm.controls['city'].valid">
+                                <span *ngIf="employeeForm.controls['city'].hasError('required')"
+                                    class="form-control-validation">
+                                    city is required
+                                </span>
+                            </div> 
+                        </div>
+        
+                        <div class="form-group col-md-2">
+                            <label for="inputZip">Zip</label>
+                            <input type="text" id="zip" name="zip" formControlName="zip" class="form-control" id="inputZip">
+                            
+                            <div *ngIf="submitted && !employeeForm.controls['zip'].valid">
+                                <span *ngIf="employeeForm.controls['zip'].hasError('required')" class="form-control-validation">
+                                    zip is required
+                                </span>
+                            </div> 
+                        </div>
+                    </div> -->
+
+          <!-- <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" id="checkin" name="checkin" formControlName="checkin"
+                                type="checkbox">
+                            <label class="form-check-label" for="gridCheck">
+                                Check in
+                            </label> 
+                            <div *ngIf="submitted && !employeeForm.controls['checkin'].valid">
+                                <span *ngIf="employeeForm.controls['checkin'].hasError('required')"
+                                    class="form-control-validation">
+                                    checkin is required
+                                </span>
+                            </div> 
+                        </div>
+                    </div> -->
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="textarea" rows="4" name="description" id="description" formControlName="description"
+              class="form-control"> </textarea>
+            <!-- description Validation  Start -->
+            <div *ngIf="submitted && !productForm.controls['description'].valid">
+              <span *ngIf="productForm.controls['description'].hasError('required')" class="form-control-validation">
+                Description is required
+              </span>
+            </div>
+            <!-- description Valiation End -->
+          </div>
+          <!-- <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3 col-sm-10">
+                                <div class="card">
+                                    <p-toast></p-toast>
+                                    <p-captcha siteKey="6Lf2XQkTAAAAANcvOwYqPxWL4iZDksFqHpS39GDA"
+                                        (onResponse)="showResponse($event)"></p-captcha>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div> -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>

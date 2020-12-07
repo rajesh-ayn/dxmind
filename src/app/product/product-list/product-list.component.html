@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="container">
+  <h2 class="text-warning">-------- Product List -------</h2>
+  <div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="product_filter" placeholder="Enter your search">
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Profit Margin</th>
+        <th>SKU</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let product of product_list | filter: product_filter;">
+        <!-- <td>{{product?.product_id}}</td> -->
+        <td>{{product?.product_name}}</td>
+        <td>{{product?.price }}</td>
+        <td>{{product?.profit_margin  }}</td>
+        <td>{{product?.sku }}</td>
+        <td>{{product?.description}}</td>
+        <td><img style="width: 20px;
+            height: 20px;cursor: pointer;" src="../../../assets/edit.svg" alt="" (click)="updateProduct(product)"></td>
+        <td><img style="width: 20px;
+            height: 20px;cursor: pointer;" src="../../../assets/delete.svg" alt="" (click)="deleteProduct(product)">
+        </td>
+      </tr>
+      <!-- <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls> -->
+    </tbody>
+  </table>
+</div>
+
+<ngx-spinner></ngx-spinner>

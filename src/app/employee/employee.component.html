@@ -1,0 +1,273 @@
+<app-header></app-header>
+<main>
+  <div class="container-fluid">
+    <div class="card mb-3 mt-2">
+      <div class="card-header text-center text-info bg-light">
+        Employee Registration...
+      </div>
+      <div class="card-body">
+        <form [formGroup]="employeeForm" (submit)="onSubmit(employeeForm)">
+          <div class="form-row">
+            <div class="col-md-2">
+              <div class="form-row">
+                <div class="col-md-12">
+                  <span class=" icon:'pi pi-fw pi-th-large'"></span>
+                  <!-- <img class="employee-image" src="../../assets/profile.jpeg" alt=""> -->
+                  <img class="employee-image" [src]="imageUrl" alt="">
+                  <div class="group-gap">
+
+                    <!-- Upload image -->
+                    <div class="avatar-upload ">
+                      <div class="avatar-edit">
+                        <input type='file' formControlName="photo" style="display: none;" id="imageUpload"
+                          accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+                      </div>
+                      <div class="avatar-preview employee-image">
+                        <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Submit Button -->
+                  <button type="button" class="btn btn-danger btn-lg btn-block" (click)="fileInput.click()">Upload
+                    Image</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-10">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="first_name">First Name</label>
+                  <input name="first_name" id="first_name" type="input" formControlName="first_name"
+                    class="form-control" id="first_name">
+                  <!-- First Name Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['first_name'].valid">
+                    <span *ngIf="employeeForm.controls['first_name'].hasError('required')"
+                      class="form-control-validation">
+                      First name is required
+                    </span>
+                  </div>
+                  <!-- End First Name Valiation End -->
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="last_name">Last Name</label>
+                  <input type="input" name="last_name" id="last_name" formControlName="last_name" class="form-control"
+                    id="last_name">
+                  <!-- Last Name Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['last_name'].valid">
+                    <span *ngIf="employeeForm.controls['last_name'].hasError('required')"
+                      class="form-control-validation">
+                      Last name is required
+                    </span>
+                  </div>
+                  <!-- End Last Name Valiation End -->
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" id="email" formControlName="email" class="form-control" id="email">
+                  <!-- Last email Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['email'].valid">
+                    <span *ngIf="employeeForm.controls['email'].hasError('required')" class="form-control-validation">
+                      email is required
+                    </span>
+                  </div>
+                  <!-- End Last Name Valiation End -->
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Date Of Birth</label>
+                  <input type="date" name="dob" id="dob" formControlName="dob" class="form-control" id="dob">
+                  <!-- Last Date Of Birth Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['dob'].valid">
+                    <span *ngIf="employeeForm.controls['dob'].hasError('required')" class="form-control-validation">
+                      Date of birth is required
+                    </span>
+                  </div>
+                  <!-- End Date Of Birth Valiation End -->
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputAddress">Merital Status</label>
+                  <select id="merital_status" name="merital_status" formControlName="merital_status"
+                    class="form-control">
+                    <!-- <option selected>Choose...</option> -->
+                    <option *ngFor=" let merried_status of merital_status_arr;">{{ merried_status }}
+                    </option>
+                  </select>
+                  <!-- merital_status Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['merital_status'].valid">
+                    <span *ngIf="employeeForm.controls['merital_status'].hasError('required')"
+                      class="form-control-validation">
+                      merital status is required
+                    </span>
+                  </div>
+                  <!-- End merital_status Valiation End -->
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="gender">Gender</label>
+                  <select id="gender" name="gender" formControlName="gender" class="form-control">
+                    <!-- <option selected>Choose...</option> -->
+                    <option *ngFor=" let gen of gender;">{{ gen }}</option>
+                  </select>
+                  <!-- gender Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['gender'].valid">
+                    <span *ngIf="employeeForm.controls['gender'].hasError('required')" class="form-control-validation">
+                      gender is required
+                    </span>
+                  </div>
+                  <!-- End gender Valiation End -->
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="country">Country</label>
+                  <select id="state" name="state" formControlName="country"
+                    (change)="changeCountry($event.target.value)" [(ngModel)]="selectedCountry" class="form-control">
+                    <!-- <option selected>Choose...</option> -->
+                    <option *ngFor="let country of Countries">{{ country.name }}</option>
+                  </select>
+                  <!-- countryValidation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['country'].valid">
+                    <span *ngIf="employeeForm.controls['country'].hasError('required')" class="form-control-validation">
+                      country is required
+                    </span>
+                  </div>
+                  <!-- End country Valiation End -->
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputState">State</label>
+                  <select id="state" name="state" formControlName="state" (change)="changeState($event.target.value)"
+                    class="form-control">
+                    <!-- <option selected>Choose...</option> -->
+                    <option *ngFor="let state of states">{{ state.name }}</option>
+                  </select>
+                  <!-- Last Name Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['state'].valid">
+                    <span *ngIf="employeeForm.controls['state'].hasError('required')" class="form-control-validation">
+                      state is required
+                    </span>
+                  </div>
+                  <!-- End Last Name Valiation End -->
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputState">City</label>
+                  <select id="city" name="city" formControlName="city" class="form-control">
+                    <!-- <option selected>Choose...</option> -->
+                    <option *ngFor="let city of cities">{{ city }}</option>
+                  </select>
+                  <!-- Last Name Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['city'].valid">
+                    <span *ngIf="employeeForm.controls['city'].hasError('required')" class="form-control-validation">
+                      city is required
+                    </span>
+                  </div>
+                  <!-- End Last Name Valiation End -->
+                </div>
+              </div>
+              <div class="form-row">
+
+                <div class="form-group col-md-6">
+                  <label for="mobile">Mobile</label>
+                  <input type="number" name="mobile" id="mobile" formControlName="mobile" class="form-control"
+                    id="mobile">
+                  <!--  mobile Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['mobile'].valid">
+                    <span *ngIf="employeeForm.controls['mobile'].hasError('required')" class="form-control-validation">
+                      mobile is required
+                    </span>
+                  </div>
+                </div>
+                <!-- End  mobile Valiation End -->
+
+                <div class="form-group col-md-3">
+                  <label for="age">Age</label>
+                  <input type="number" name="age" id="age" formControlName="age" class="form-control" id="age">
+                  <!-- age Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['age'].valid">
+                    <span *ngIf="employeeForm.controls['age'].hasError('required')" class="form-control-validation">
+                      age is required
+                    </span>
+                  </div>
+                  <!-- End age Valiation End -->
+                </div>
+
+
+                <div class="form-group col-md-3">
+                  <div class="custom-control custom-switch float-right p-1 m-4">
+                    <input type="checkbox" formControlName="status" class="custom-control-input" id="status">
+                    <label class="custom-control-label" for="status">Status (Active/In-Active)</label>
+                    <!--  Status Validation  Start -->
+                    <div *ngIf="submitted && !employeeForm.controls['status'].valid">
+                      <span *ngIf="employeeForm.controls['status'].hasError('required')" class="text-danger">
+                        Status is required
+                      </span>
+                    </div>
+                    <!-- End Status Valiation End -->
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="checkin">Check-In</label>
+                  <input type="date" name="checkin" id="checkin" formControlName="checkin" class="form-control"
+                    id="dob">
+                  <!-- Last checkin Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['checkin'].valid">
+                    <span *ngIf="employeeForm.controls['checkin'].hasError('required')" class="form-control-validation">
+                      checkin is required
+                    </span>
+                  </div>
+                  <!-- End checkin Valiation End -->
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="checkout">Check-Out</label>
+                  <input type="date" name="checkout" id="checkout" formControlName="checkout" class="form-control"
+                    id="checkout">
+                  <!-- Last checkout Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['checkout'].valid">
+                    <span *ngIf="employeeForm.controls['checkout'].hasError('required')"
+                      class="form-control-validation">
+                      checkout is required
+                    </span>
+                  </div>
+                  <!-- End checkout Valiation End -->
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-12 mt-3">
+                  <label for="address">Address</label>
+                  <textarea class="form-control" formControlName="address" id="address" rows="3"></textarea>
+                  <!-- permanent_address Validation  Start -->
+                  <div *ngIf="submitted && !employeeForm.controls['address'].valid">
+                    <span *ngIf="employeeForm.controls['address'].hasError('required')" class="text-danger">
+                      Address is required
+                    </span>
+                    <span *ngIf="employeeForm.controls['address'].hasError('minlength')" class="text-danger">
+                      Address should be greator than 8 characters.
+                    </span>
+                  </div>
+                  <!-- End permanent_address Valiation End -->
+                </div>
+              </div>
+              <!-- <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="checkin" name="checkin"
+                                        formControlName="checkin" type="checkbox">
+                                    <label class="form-check-label" for="gridCheck">
+                                        Check in
+                                    </label> 
+                                </div>
+                            </div> -->
+            </div>
+          </div>
+
+          <button type="submit" [disabled]="!employeeForm.valid" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-light bg-info w-100">
+  <a class="navbar-brand text-light" (click)="visibleSidebar2 = true">
+    <i class="fa fa-home home-icon"></i>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link text-light" routerLink="/product">Product <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" routerLink="/employee">Employee</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Data
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item text-secondary" routerLink="/employee-list">Employee List</a>
+          <a class="dropdown-item text-secondary" routerLink="/product-list">Product List</a>
+          <div class="dropdown-divider text-secondary"></div>
+        </div>
+      </li>
+    </ul>
+    <div class="nav navbar-nav navbar-right btn-group" dropdown>
+      <div class="btn-group dropleft">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <span class="caret" data-toggle="dropdown"></span>
+        </button>
+        <div class="dropdown-menu">
+          <li *ngIf="userIsAuthenticated" role="menuitem"><a class="dropdown-item" routerLink="/product">Product</a>
+          </li>
+          <li *ngIf="!userIsAuthenticated" role="menuitem"><a class="dropdown-item" routerLink="/admin/login"
+              data-toggle="modal" data-target="#login-modal">Login</a>
+          </li>
+          <li *ngIf="!userIsAuthenticated" role="menuitem"><a class="dropdown-item" routerLink="/admin/signup"
+              data-toggle="modal" data-target="#signup-modal">Signup</a></li>
+
+          <li *ngIf="userIsAuthenticated" (click)="onLogout()" role="menuitem"><a class="dropdown-item"
+              href="#">Logout</a></li>
+
+          <li class="divider dropdown-divider"></li>
+        </div>
+
+      </div>
+    </div>
+    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+    <!-- <button class="btn btn-outline-success text-light my-2 my-sm-0" type="submit">Search</button> -->
+
+  </div>
+</nav>
+
+<!-- sidebae -->
+
+<!-- <p-card>
+        <p-header>
+            Header content here
+        </p-header>
+        Body Content
+        <p-footer>
+            Footer content here
+        </p-footer>
+    </p-card>  -->
+
+<!-- Sidebar -->

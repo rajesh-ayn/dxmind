@@ -1,0 +1,21 @@
+.home-icon {
+    font-size:30px;
+    color:#9a3bed;
+    cursor: pointer;
+ }
+
+ p {
+   font-family: Lato;
+ }
+ 
+ pre {
+   background: black;
+   color: white;
+ }
+
+//  sidebar icon css
+ ::ng-deep .p-button.p-button-icon-only { 
+   background-color:#17a2b8!important;
+   border: 1px solid #17a2b8!important;
+   color: white;
+ }
